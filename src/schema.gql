@@ -1,0 +1,32 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type ToDo {
+  id: Int!
+  todo: String!
+  description: String
+  done: Boolean!
+}
+
+type Query {
+  getAll: [ToDo]!
+  get(id: Int!): ToDo
+}
+
+type Mutation {
+  create(createToDoInput: CreateToDoInput!): Boolean!
+  update(updateToDoInput: UpdateToDoInput!, id: Int!): Boolean!
+  delete(id: Int!): Boolean!
+}
+
+input CreateToDoInput {
+  todo: String!
+  description: String
+}
+
+input UpdateToDoInput {
+  todo: String!
+  description: String
+  done: Boolean!
+}
