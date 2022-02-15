@@ -1,0 +1,47 @@
+.todo {
+    margin: 5px 0 5px 30%;
+    padding: 5px;
+    border: solid 1px rgb(218, 216, 216);
+    border-radius: 3px;
+    background-color: #f9fbf5;
+}
+
+input[type="text"] {
+    color: inherit;
+    background-color: inherit;
+    font-family: inherit;
+    border: none;
+    margin: 0 5px;
+}
+
+input[type="text"]:focus {
+    background-color: inherit;
+    font-family: inherit;
+    outline: none;
+}
+
+.done {
+    color: #8e8e8e;
+    background-color: #dddddd;
+}
+
+button {
+    margin: 5px;
+}
+.deleteButton {
+    background-color: rgb(177, 79, 79);
+    font-family: inherit;
+    border: none;
+    border-radius: 3px;
+    padding: 5px;
+    color: white;
+}
+
+.saveButton {
+    background-color: rgb(77, 177, 77);
+    font-family: inherit;
+    border: none;
+    border-radius: 3px;
+    padding: 5px;
+    color: white;
+}

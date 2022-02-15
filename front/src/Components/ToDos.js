@@ -3,7 +3,11 @@ import { useMutation, useQuery } from "@apollo/client";
 import GET_ALL from "../queries/getAll";
 import CREATE from "../mutations/create";
 import DELETE from "../mutations/delete";
+import UPDATE from "../mutations/update";
 import ToDo from "./ToDo";
+import ToDoInput from "./ToDoInput";
+
+import "./ToDos.css";
 
 const ToDos = () => {
     const { loading, error, data } = useQuery(GET_ALL);
@@ -13,15 +17,11 @@ const ToDos = () => {
     const [deleteToDo] = useMutation(DELETE, {
         refetchQueries: [GET_ALL, "getAll"],
     });
-
-    const creer = () => {
-        createToDo({
-            variables: { todo: "test", description: "test description" },
-        });
-    };
+    const [updateToDo] = useMutation(UPDATE, {
+        refetchQueries: [GET_ALL, "getAll"],
+    });
 
     const supprimer = (id) => {
-        console.log(typeof parseInt(id, 10));
         deleteToDo({
             variables: { id: parseInt(id, 10) },
         });
@@ -33,19 +33,21 @@ const ToDos = () => {
     let todos = data.getAll.map(({ id, description, done, todo }) => (
         <ToDo
             key={id}
+            id={id}
             description={description}
             done={done}
             todo={todo}
             delete={() => {
                 supprimer(id);
             }}
+            update={updateToDo}
         />
     ));
 
     return (
-        <div class="todos">
+        <div className="todos">
             {todos}
-            <button onClick={creer}>Créer</button>
+            <ToDoInput create={createToDo} />
         </div>
     );
 };
