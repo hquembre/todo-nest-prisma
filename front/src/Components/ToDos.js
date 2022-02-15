@@ -29,20 +29,24 @@ const ToDos = () => {
 
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error :(</p>;
-
-    let todos = data.getAll.map(({ id, description, done, todo }) => (
-        <ToDo
-            key={id}
-            id={id}
-            description={description}
-            done={done}
-            todo={todo}
-            delete={() => {
-                supprimer(id);
-            }}
-            update={updateToDo}
-        />
-    ));
+    let todoElements = [...data.getAll];
+    let todos = todoElements
+        .sort((a, b) => {
+            return a.id - b.id;
+        })
+        .map(({ id, description, done, todo }) => (
+            <ToDo
+                key={id}
+                id={id}
+                description={description}
+                done={done}
+                todo={todo}
+                delete={() => {
+                    supprimer(id);
+                }}
+                update={updateToDo}
+            />
+        ));
 
     return (
         <div className="todos">

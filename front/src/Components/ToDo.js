@@ -16,6 +16,10 @@ const ToDo = (props) => {
         );
     }, [done, toDo, description, changed]);
 
+    useEffect(() => {
+        setChanged(false);
+    }, [props.done, props.todo, props.description]);
+
     let changeElement;
     if (changed) {
         changeElement = (
@@ -30,7 +34,6 @@ const ToDo = (props) => {
                             done: done,
                         },
                     });
-                    setChanged(false);
                 }}
             >
                 Sauvegarder

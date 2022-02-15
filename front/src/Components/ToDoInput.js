@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 import "./ToDoInput.css";
 
@@ -18,6 +18,8 @@ const ToDoInput = (props) => {
                             description: description,
                         },
                     });
+                    setToDo("");
+                    setDescription("");
                 }}
             >
                 Créer
